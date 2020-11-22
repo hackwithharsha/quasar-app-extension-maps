@@ -6,11 +6,11 @@ An agnostic geolocation/map interface
 Both installing and updating this extension are the same...
 
 ```
-quasar ext add maps
+quasar ext add @sourcesync/maps
 ```
 
 ## Removing
 
 ```
-quasar ext remove maps
+quasar ext remove @sourcesync/maps
 ```
