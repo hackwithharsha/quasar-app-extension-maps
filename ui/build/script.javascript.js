@@ -10,13 +10,14 @@ const { nodeResolve } = require("@rollup/plugin-node-resolve");
 const buildConf = require("./config");
 const buildUtils = require("./utils");
 
-const commonjs = require("@rollup/plugin-commonjs");
 const VuePlugin = require("rollup-plugin-vue");
 
 const rollupPlugins = [
   json(),
-  commonjs(),
-  VuePlugin(/* VuePluginOptions */),
+  VuePlugin({
+    css: true,
+    compileTemplate: true,
+  }),
   buble({
     objectAssign: "Object.assign",
   }),

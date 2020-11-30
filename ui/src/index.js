@@ -1,19 +1,12 @@
-import { version } from '../package.json'
+import { version } from "../package.json";
 
-import Component from './components/Component'
-import Directive from './directives/Directive'
+import Component from "./components/Component";
+import Directive from "./directives/Directive";
 
 // Components
-import CustomQBtn from './components/CustomBtn.js'
+import CustomQBtn from "./components/CustomBtn.vue";
 
-export {
-  version,
-
-  Component,
-  Directive,
-
-  CustomQBtn
-}
+export { version, Component, Directive, CustomQBtn };
 
 export default {
   version,
@@ -21,10 +14,9 @@ export default {
   Component,
   Directive,
 
-  install (Vue) {
-    Vue.component(Component.name, Component)
-    Vue.component(CustomQBtn.name, CustomQBtn)
-    Vue.directive(Directive.name, Directive)
-
-  }
-}
+  install(Vue) {
+    Vue.component(Component.name, Component);
+    Vue.component(CustomQBtn.name, CustomQBtn);
+    Vue.directive(Directive.name, Directive);
+  },
+};

@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <QCustomBtn></QCustomBtn>
+    <QCustomBtn label="Custom Btn" color="blue-7"></QCustomBtn>
   </q-page>
 </template>
 
