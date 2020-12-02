@@ -1,11 +1,5 @@
 <template>
   <q-page padding>
-    <QCustomBtn label="Custom Btn" color="blue-7"></QCustomBtn>
+    <QMapBox :settings="{ zoom: 12 }" />
   </q-page>
 </template>
-
-<style lang="sass" scoped>
-.directive-target
-  width: 50px
-  height: 50px
-</style>

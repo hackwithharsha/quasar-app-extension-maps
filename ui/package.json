@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "sunil@sourcedigital.net",
   "description": "Quasar Extension for MapBox and Google Maps",
-  "license": "Source Digital",
+  "license": "MIT",
   "module": "dist/index.esm.js",
   "main": "dist/index.common.js",
   "scripts": {
@@ -47,5 +47,8 @@
   "browserslist": [
     "last 1 version, not dead, ie >= 11"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mapbox-gl": "^1.13.0"
+  }
 }
