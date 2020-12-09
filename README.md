@@ -1,12 +1,26 @@
+# quasar-app-extension-maps
+> An agnostic geolocation/map interface
+
 <img src="https://img.shields.io/npm/v/quasar-ui-maps.svg?label=quasar-ui-maps">
 <img src="https://img.shields.io/npm/v/quasar-app-extension-maps.svg?label=quasar-app-extension-maps">
 
-# Structure
+## Structure
 * [/ui](ui) - standalone npm package
 * [/app-extension](app-extension) - Quasar app extension
 
-# Donate
+## Donate
 If you appreciate the work that went into this project, please consider [donating to Quasar](https://donate.quasar.dev).
 
-# License
+## License
 Source Digital (c) sunil@sourcedigital.net
+
+## Adding
+
+```
+quasar ext add @sourcesync/maps
+```
+## Removing
+
+```
+quasar ext remove @sourcesync/maps
+```
