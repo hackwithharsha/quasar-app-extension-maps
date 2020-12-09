@@ -44,14 +44,20 @@ export default (() => {
 
       // setup common scripts and css properties
       mapStyle.setAttribute("rel", "stylesheet");
+      mapScript.setAttribute("defer", "");
       mapScript.setAttribute("async", "");
 
       // append to document
       document.head.appendChild(mapStyle);
-      document.head.appendChild(mapScript);
-      
+      document.body.appendChild(mapScript);
+
+      // setup global variable for easy access
+      window.maps = {
+        mode: options.mode.toLowerCase(),
+      };
+
       // api has been setup
-      isApiSetUp = true
+      isApiSetUp = true;
     }
   };
 })();

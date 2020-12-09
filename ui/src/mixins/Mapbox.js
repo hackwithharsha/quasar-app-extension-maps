@@ -1,5 +1,12 @@
+import Vue from "vue";
+
 import { MAPBOX_ACCESS_TOKEN } from "../../.env";
 import { log } from "../utils/debug";
+import find from "../utils/find";
+
+// utils
+import { $bus } from "../index";
+import addControl from "./Mapbox/controls";
 
 export default {
   name: "MapBoxMixin",
@@ -17,25 +24,24 @@ export default {
   },
   computed: {
     defaultSetup() {
-      let config = {
+      return {
         zoom: 9, // default zoom level
-        center: [-74.5, 40],
-        style: "mapbox://styles/mapbox/streets-v11",
+        center: [30.5, 50.5],
+        style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o",
         ...this.settings,
       };
-      // check if props.settings exists
-      return config;
     },
   },
   created() {
     // check if mapboxgl exists
-    const { mapboxgl } = window;
+    const { mapboxgl, maps } = window;
 
+    // TODO: loop till 1500ms, if still not available throw error
+    find("mapboxgl", window);
     if (!mapboxgl || Number.parseFloat(mapboxgl.version) <= 1) {
       throw new Error("mapbox-gl loading failed!");
     }
-
-    log("Mapbox-gl", "Sucessfully loaded.");
+    log(maps.mode, "Sucessfully loaded.");
 
     // setup accessToken for mapbox
     mapboxgl.accessToken = this.access_token;
@@ -47,15 +53,22 @@ export default {
         // clear interval on finding the element
         clearInterval(mapSearchInterval);
 
+        // destructure mapbox config
+        const {
+          defaultSetup,
+          settings: { controls },
+        } = this;
         // setup mapbox instance
-        const map = new mapboxgl.Map({
+        let map = new mapboxgl.Map({
           container: el.id,
-          ...this.defaultSetup,
+          ...defaultSetup,
         });
 
-        // TODO: add customizations for controls and other customization options separately 
-        const nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, "top-right");
+        // TODO: add customizations for controls and other customization options separately
+        if (controls && typeof controls === "string") {
+          map = addControl(map, mapboxgl, controls);
+        }
+
         this.mapbox = map;
       }
     });
