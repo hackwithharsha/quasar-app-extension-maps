@@ -1,10 +1,4 @@
 import Vue from "vue";
-import VuePlugin, { init } from "ui"; // "ui" is aliased in quasar.conf.js
+import VuePlugin from "@sourcesync/quasar-ui-maps"; // "@sourcesync/quasar-ui-maps" is aliased in quasar.conf.js
 
 Vue.use(VuePlugin);
-
-const options = {
-  mode: "mapbox"
-};
-
-init(options, true);

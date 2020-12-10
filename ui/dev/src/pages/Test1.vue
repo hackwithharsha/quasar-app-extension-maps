@@ -1,10 +1,15 @@
 <template>
   <q-page>
-    <QMapBox :settings="config.map">
-      <template v-for="marker in markers">
-        <QMarker :key="marker.id" :marker="marker" />
-      </template>
-    </QMapBox>
+    <div class="map">
+      <QMapBox :config="config.map" :markers="markers">
+        <QMarker
+          v-for="marker in markers"
+          :key="marker.id"
+          :position="marker.position"
+          :text="marker.text"
+        />
+      </QMapBox>
+    </div>
   </q-page>
 </template>
 <script>
@@ -12,22 +17,12 @@ export default {
   name: "test1",
   data() {
     return {
-      /*
-        config = {
-          map: {
-            controls: "bottom-right"
-          }
-          marker: {
-            color: "#3FB1CE",
-          },
-          popup: {
-            closeOnClick: true,
-          },
-        };
-      */
       config: {
         map: {
-          controls: "bottom-right"
+          accessToken:
+            "pk.eyJ1Ijoic29mdHJhdyIsImEiOiJjazZzdTR4OW4wajF4M29udnZxMGxseXozIn0.YoK-b6rkj9Nw0zkWzvD0Xg",
+          controls: "top-right",
+          style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o"
         }
       },
       markers: [
@@ -46,3 +41,9 @@ export default {
   }
 };
 </script>
+<style>
+.map {
+  height: 100vh;
+  width: 100vw;
+}
+</style>

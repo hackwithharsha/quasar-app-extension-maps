@@ -51,7 +51,7 @@ module.exports = function (ctx) {
 
       chainWebpack (chain) {
         chain.resolve.alias.merge({
-          'ui': path.resolve(__dirname, '../src/index.js')
+          '@sourcesync/quasar-ui-maps': path.resolve(__dirname, '../src/index.js')
         })
       }
     },

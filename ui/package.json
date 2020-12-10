@@ -1,5 +1,5 @@
 {
-  "name": "quasar-ui-maps",
+  "name": "@sourcesync/quasar-ui-maps",
   "version": "0.0.1",
   "author": "sunil@sourcedigital.net",
   "description": "Quasar Extension for MapBox and Google Maps",

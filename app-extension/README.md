@@ -2,7 +2,7 @@
 
 > Add a short description of your App Extension. What does it do? How is it beneficial? Why would someone want to use it?
 
-[![npm](https://img.shields.io/npm/v/quasar-app-extension-maps.svg?label=quasar-app-extension-maps)](https://www.npmjs.com/package/quasar-app-extension-maps)
+[![npm](https://img.shields.io/npm/v/quasar-app-extension-maps.svg?label=@sourcesync/quasar-app-extension-maps)](https://www.npmjs.com/package/quasar-app-extension-maps)
 [![npm](https://img.shields.io/npm/dt/quasar-app-extension-maps.svg)](https://www.npmjs.com/package/quasar-app-extension-maps)
 
 # Install

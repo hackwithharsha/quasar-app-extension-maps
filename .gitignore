@@ -16,5 +16,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 
+*todo*
+
 # envirnoment files
 *.env*
+
+# Generated files
+mapbox-gl.scss
