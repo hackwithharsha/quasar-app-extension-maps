@@ -2,6 +2,13 @@
 
 > Template
 
+```js
+import QMaps from "@sourcesync/quasar-ui-maps";
+Vue.use(QMaps, {
+    accessToken: '<mapbox:accessToken>'
+})
+```
+
 ```html
 <QMapBox :settings="config.map">
   <template v-for="marker in markers">

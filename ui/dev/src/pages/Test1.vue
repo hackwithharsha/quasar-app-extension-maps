@@ -19,8 +19,6 @@ export default {
     return {
       config: {
         map: {
-          accessToken:
-            "pk.eyJ1Ijoic29mdHJhdyIsImEiOiJjazZzdTR4OW4wajF4M29udnZxMGxseXozIn0.YoK-b6rkj9Nw0zkWzvD0Xg",
           controls: "top-right",
           style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o"
         }

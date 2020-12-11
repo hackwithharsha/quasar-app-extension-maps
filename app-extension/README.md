@@ -6,16 +6,14 @@
 [![npm](https://img.shields.io/npm/dt/quasar-app-extension-maps.svg)](https://www.npmjs.com/package/quasar-app-extension-maps)
 
 # Install
+
 ```bash
 quasar ext add maps
 ```
 Quasar CLI will retrieve it from NPM and install the extension.
 
-## Prompts
-
-> If your app extension uses prompts, explain them here, otherwise remove this section and remove prompts.js file.
-
 # Uninstall
+
 ```bash
 quasar ext remove maps
 ```

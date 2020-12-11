@@ -12,7 +12,7 @@
   "bugs": "",
   "homepage": "https://github.com/Source-Digital/quasar-app-extension-maps.git",
   "dependencies": {
-    "quasar-ui-maps": "^0.0.1"
+    "@sourcesync/quasar-ui-maps": "^0.0.1"
   },
   "engines": {
     "node": ">= 8.9.0",

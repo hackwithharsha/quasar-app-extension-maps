@@ -1,13 +1,11 @@
-# Component QMaps and Directive v-maps
+# Component QMaps
 
-[![npm](https://img.shields.io/npm/v/quasar-ui-maps.svg?label=quasar-ui-maps)](https://www.npmjs.com/package/quasar-ui-maps)
-[![npm](https://img.shields.io/npm/dt/quasar-ui-maps.svg)](https://www.npmjs.com/package/quasar-ui-maps)
+[![npm](https://img.shields.io/npm/v/quasar-ui-maps.svg?label=@sourcesync/quasar-ui-maps)](https://www.npmjs.com/package/quasar-ui-maps)
+[![npm](https://img.shields.io/npm/dt/@sourcesync/quasar-ui-maps.svg)](https://www.npmjs.com/package/quasar-ui-maps)
 
 # Component QMaps
 > Short description of the component
 
-# Directive v-maps
-> Short description of the directive
 
 # Usage
 
@@ -21,10 +19,11 @@ Create and register a boot file:
 
 ```js
 import Vue from 'vue'
-import Plugin from 'quasar-ui-maps'
-import 'quasar-ui-maps/dist/index.css'
+import QMaps from '@sourcesync/quasar-ui-maps'
 
-Vue.use(Plugin)
+Vue.use(QMaps, {
+  accessToken: '<mapbox/google public api_key>'
+})
 ```
 
 **OR**:
@@ -33,14 +32,12 @@ Vue.use(Plugin)
 <style src="quasar-ui-maps/dist/index.css"></style>
 
 <script>
-import { Component as QMaps, Directive } from 'quasar-ui-maps'
+import { Mapbox, Marker } from '@sourcesync/quasar-ui-maps'
 
 export default {
   components: {
-    QMaps
-  },
-  directives: {
-    Directive
+    Mapbox,
+    Marker
   }
 }
 </script>
@@ -50,10 +47,11 @@ export default {
 
 ```js
 import Vue from 'vue'
-import Plugin from 'quasar-ui-maps'
-import 'quasar-ui-maps/dist/index.css'
+import Plugin from '@sourcesync/quasar-ui-maps'
 
-Vue.use(Plugin)
+Vue.use(QMaps, {
+  accessToken: '<mapbox/google public api_key>'
+})
 ```
 
 **OR**:
@@ -62,14 +60,12 @@ Vue.use(Plugin)
 <style src="quasar-ui-maps/dist/index.css"></style>
 
 <script>
-import { Component as QMaps, Directive } from 'quasar-ui-maps'
+import { Mapbox, Marker } from '@sourcesync/quasar-ui-maps'
 
 export default {
   components: {
-    QMaps
-  },
-  directives: {
-    Directive
+    Mapbox,
+    Marker
   }
 }
 </script>
@@ -84,16 +80,16 @@ Add the following tag(s) after the Quasar ones:
 ```html
 <head>
   <!-- AFTER the Quasar stylesheet tags: -->
-  <link href="https://cdn.jsdelivr.net/npm/quasar-ui-maps/dist/index.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@sourcesync/quasar-ui-maps/dist/index.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <!-- at end of body, AFTER Quasar script(s): -->
-  <script src="https://cdn.jsdelivr.net/npm/quasar-ui-maps/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@sourcesync/quasar-ui-maps/dist/index.umd.min.js"></script>
 </body>
 ```
 If you need the RTL variant of the CSS, then go for the following (instead of the above stylesheet link):
 ```html
-<link href="https://cdn.jsdelivr.net/npm/quasar-ui-maps/dist/index.rtl.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/@sourcesync/quasar-ui-maps/dist/index.rtl.min.css" rel="stylesheet" type="text/css">
 ```
 
 # Setup
@@ -137,4 +133,4 @@ If you have a component that has assets, like language or icon-sets, you will ne
 If you appreciate the work that went into this, please consider [donating to Quasar](https://donate.quasar.dev).
 
 # License
-Source Digital (c) sunil@sourcedigital.net
+Source Digital (c) 2020 Source Digital

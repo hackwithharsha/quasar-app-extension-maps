@@ -8,8 +8,10 @@ export { version, MapBox, Marker };
 export default {
   version,
 
-  install(Vue) {
+  install(Vue, config) {
     Vue.component(MapBox.name, MapBox);
     Vue.component(Marker.name, Marker);
+
+    Vue.prototype.$config = config
   },
 };

@@ -1,4 +1,4 @@
-# quasar-app-extension-maps
+# @sourcesync/quasar-app-extension-maps
 > An agnostic geolocation/map interface
 
 <img src="https://img.shields.io/npm/v/quasar-ui-maps.svg?label=@sourcesync/quasar-ui-maps">
@@ -12,7 +12,7 @@
 If you appreciate the work that went into this project, please consider [donating to Quasar](https://donate.quasar.dev).
 
 ## License
-Source Digital (c) sunil@sourcedigital.net
+Source Digital (c) 2020 Source Digital
 
 ## Adding
 

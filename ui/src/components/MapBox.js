@@ -64,7 +64,8 @@ export default {
   },
   mounted() {
     // check if accessToken exists
-    const { accessToken, controls } = this.setup;
+    const accessToken = this.$config.accessToken || this.setup.accessToken
+
     if (!accessToken) {
       throw new Error("Access token isn't defined");
     }
@@ -72,6 +73,7 @@ export default {
     mapboxgl.accessToken = accessToken;
     let map = new mapboxgl.Map({ ...this.setup });
 
+    const { controls } = this.setup;
     if (controls) map = this._addControls(map, controls);
 
     // filter markers from slot
