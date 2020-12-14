@@ -1,14 +1,23 @@
 <template>
   <q-page>
     <div class="map">
-      <QMapBox :config="config.map" :markers="markers">
+      <!-- <QMapBox :config="config.mapbox">
         <QMarker
           v-for="marker in markers"
           :key="marker.id"
           :position="marker.position"
           :text="marker.text"
         />
-      </QMapBox>
+      </QMapBox> -->
+
+      <QGmaps :config="config.gmap">
+        <QMarker
+          v-for="marker in markers"
+          :key="marker.id"
+          :position="marker.position"
+          :text="marker.text"
+        />
+      </QGmaps>
     </div>
   </q-page>
 </template>
@@ -18,20 +27,23 @@ export default {
   data() {
     return {
       config: {
-        map: {
+        mapbox: {
           controls: "top-right",
           style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o"
+        },
+        gmap: {
+          disableDefaultUI: false
         }
       },
       markers: [
         {
           id: Date.now(),
-          position: [30.5, 50.5],
+          position: { lat: 30.5, lng: 50.5 },
           text: "This is a test marker"
         },
         {
           id: Date.now() + 1,
-          position: [30.5, 50.3]
+          position: { lat: 30.5, lng: 50.3 }
           // this doesn't have a text to render
         }
       ]

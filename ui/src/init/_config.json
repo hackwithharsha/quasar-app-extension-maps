@@ -4,5 +4,8 @@
     "script": "https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js",
     "npm": "mapbox-gl",
     "mapStyle": "mapbox://styles/mapbox/streets-v11"
+  },
+  "gmaps": {
+    "npm": "@googlemaps/js-api-loader"
   }
 }

@@ -16,16 +16,20 @@ export default {
   },
   data() {
     return {
-      mapbox: "",
+      mapbox: null,
       markers: [],
+      mode: "mapbox",
     };
   },
   provide() {
     const self = this;
     return {
       // reactive mapbox instance
-      get mapbox() {
+      get map() {
         return self.mapbox;
+      },
+      get mode() {
+        return self.mode;
       },
     };
   },
@@ -39,9 +43,6 @@ export default {
     },
     staticClass() {
       return "q-map";
-    },
-    mapInstance() {
-      return this.mapbox;
     },
   },
   methods: {
@@ -64,7 +65,7 @@ export default {
   },
   mounted() {
     // check if accessToken exists
-    const accessToken = this.$config.accessToken || this.setup.accessToken
+    const accessToken = this.$config.accessToken || this.setup.accessToken;
 
     if (!accessToken) {
       throw new Error("Access token isn't defined");
@@ -90,7 +91,7 @@ export default {
         staticClass: this.staticClass,
         ref: "container",
       },
-      [this.markers]
+      [this.mapbox && this.markers]
     );
   },
 };

@@ -48,7 +48,9 @@
     "last 1 version, not dead, ie >= 11"
   ],
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.1",
     "dotenv": "^8.2.0",
-    "mapbox-gl": "^1.13.0"
+    "mapbox-gl": "^1.13.0",
+    "underscore": "^1.12.0"
   }
 }
