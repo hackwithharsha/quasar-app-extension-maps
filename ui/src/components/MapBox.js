@@ -1,6 +1,7 @@
 import mapboxgl from "../utils/mapbox";
 
-import QMarker from "./Marker";
+import MapsMixin from "../mixins/maps";
+
 import {
   controlsPositions,
   defaultMapboxConfig,
@@ -8,29 +9,10 @@ import {
 
 export default {
   name: "QMapBox",
-  props: {
-    config: {
-      type: Object,
-      required: false,
-    },
-  },
+  mixins: [MapsMixin],
   data() {
     return {
-      mapbox: null,
-      markers: [],
       mode: "mapbox",
-    };
-  },
-  provide() {
-    const self = this;
-    return {
-      // reactive mapbox instance
-      get map() {
-        return self.mapbox;
-      },
-      get mode() {
-        return self.mode;
-      },
     };
   },
   computed: {
@@ -40,9 +22,6 @@ export default {
         ...defaultMapboxConfig,
         ...this.config,
       };
-    },
-    staticClass() {
-      return "q-map";
     },
   },
   methods: {
@@ -55,12 +34,6 @@ export default {
       const controls = new mapboxgl.NavigationControl();
       mapInstance.addControl(controls, position);
       return mapInstance;
-    },
-    _hasMarkers(defaults) {
-      const filteredSlots = defaults.filter((marker) =>
-        marker.tag.includes(QMarker.name)
-      );
-      this.markers = filteredSlots;
     },
   },
   mounted() {
@@ -82,16 +55,6 @@ export default {
       this._hasMarkers(this.$slots.default);
 
     // save instance
-    this.mapbox = map;
-  },
-  render(h) {
-    return h(
-      "div",
-      {
-        staticClass: this.staticClass,
-        ref: "container",
-      },
-      [this.mapbox && this.markers]
-    );
+    this.map = map;
   },
 };

@@ -41,7 +41,8 @@ export default {
     getPositions() {
       let positions = this.position;
       if (this.mode === "mapbox") {
-        positions = Object.keys(this.position).map((key) => this.position[key]);
+        // [lng, lat]
+        positions = [this.position["lng"], this.position["lat"]];
       }
 
       return positions;
@@ -67,7 +68,7 @@ export default {
         );
         marker.setPopup(popup);
       }
-      
+
       this.marker = marker;
     } else if (this.mode === "gmaps") {
       const { google } = window;

@@ -6,8 +6,8 @@ const controlsPositions = [
 ];
 
 const defaultMapboxConfig = {
-  zoom: 9,
-  center: [30.5, 50.5],
+  zoom: 5,
+  center: [78.9629, 20.5937], // [lng, lat]
   style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o",
 };
 

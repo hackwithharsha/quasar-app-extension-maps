@@ -1,40 +1,21 @@
-import Vue from "vue";
 import { Loader } from "../utils/googlemaps";
 
+import MapsMixin from "../mixins/maps";
+
+import { defaultGoogleMapConfig } from "../utils/googlemaps/constants";
 export default {
   name: "QGmaps",
-  props: {
-    config: {
-      type: Object,
-    },
-  },
+  mixins: [MapsMixin],
   data() {
     return {
-      gmaps: null,
       mode: "gmaps",
     };
   },
-  provide() {
-    const self = this;
-    return {
-      get map() {
-        return self.gmaps;
-      },
-      get mode() {
-        return self.mode;
-      },
-    };
-  },
   computed: {
-    staticClass() {
-      return "q-map";
-    },
     setup() {
       return {
         container: this.$refs.container,
-        zoom: 9,
-        center: { lat: 30.5, lng: 50.5 },
-        disableDefaultUI: true,
+        ...defaultGoogleMapConfig,
         ...this.config,
       };
     },
@@ -47,27 +28,19 @@ export default {
       throw new Error("Access token isn't defined");
     }
 
+    // filter markers from slot
+    if (this.$slots.default && this.$slots.default.length > 0)
+      this._hasMarkers(this.$slots.default);
+
     const loader = new Loader({
       apiKey: accessToken,
     });
 
     loader.load().then(() => {
-      const maps = new google.maps.Map(this.setup.container, {
+      const map = new google.maps.Map(this.setup.container, {
         ...this.setup,
       });
-      this.gmaps = maps;
-      Vue.prototype.$maps = this.gmaps;
+      this.map = map;
     });
-  },
-
-  render(h) {
-    return h(
-      "div",
-      {
-        staticClass: this.staticClass,
-        ref: "container",
-      },
-      [this.gmaps && this.$slots.default]
-    );
   },
 };
