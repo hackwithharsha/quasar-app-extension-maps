@@ -1,11 +1,5 @@
 import QMarker from "../components/Marker";
 export default {
-  props: {
-    config: {
-      type: Object,
-      required: false,
-    },
-  },
   data() {
     return {
       markers: [],
@@ -25,7 +19,7 @@ export default {
     };
   },
   methods: {
-    _hasMarkers(defaults) {
+    hasMarkers(defaults) {
       const filteredSlots = defaults.filter((marker) =>
         marker.tag.includes(QMarker.name)
       );
@@ -33,19 +27,8 @@ export default {
     },
   },
   computed: {
-    staticClass() {
+    classes() {
       return "q-map";
     },
-  },
-
-  render(h) {
-    return h(
-      "div",
-      {
-        staticClass: this.staticClass,
-        ref: "container",
-      },
-      [this.map && this.markers]
-    );
   },
 };

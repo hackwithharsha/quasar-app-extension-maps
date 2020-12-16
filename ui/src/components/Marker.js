@@ -1,5 +1,4 @@
-import mapboxgl from "../utils/mapbox";
-import _ from "underscore";
+const mapboxgl = require("mapbox-gl");
 import {
   defaultPopupConfig,
   defaultMarkerConfig,
@@ -22,7 +21,7 @@ export default {
     },
   },
   computed: {
-    marker_setup() {
+    markerSetup() {
       return this.config && this.config.marker
         ? {
             ...defaultMarkerConfig,
@@ -30,7 +29,7 @@ export default {
           }
         : { ...defaultMarkerConfig };
     },
-    popup_setup() {
+    popupSetup() {
       return this.config && this.config.popup
         ? {
             ...defaultPopupConfig,
@@ -57,13 +56,13 @@ export default {
   mounted() {
     if (this.mode === "mapbox") {
       const marker = new mapboxgl.Marker({
-        ...this.marker_setup,
+        ...this.markerSetup,
       })
         .setLngLat(this.getPositions)
         .addTo(this.map);
 
       if (this.text) {
-        const popup = new mapboxgl.Popup({ ...this.popup_setup }).setText(
+        const popup = new mapboxgl.Popup({ ...this.popupSetup }).setText(
           this.text
         );
         marker.setPopup(popup);
@@ -71,7 +70,6 @@ export default {
 
       this.marker = marker;
     } else if (this.mode === "gmaps") {
-      const { google } = window;
       const marker = new google.maps.Marker({
         position: { ...this.getPositions },
         title: this.text,

@@ -1,4 +1,4 @@
-import mapboxgl from "../utils/mapbox";
+const mapboxgl = require("mapbox-gl");
 
 import MapsMixin from "../mixins/maps";
 
@@ -10,6 +10,12 @@ import {
 export default {
   name: "QMapBox",
   mixins: [MapsMixin],
+  props: {
+    config: {
+      type: Object,
+      required: false,
+    },
+  },
   data() {
     return {
       mode: "mapbox",
@@ -25,7 +31,7 @@ export default {
     },
   },
   methods: {
-    _addControls(mapInstance, position = controlsPositions[0]) {
+    addControls(mapInstance, position = controlsPositions[0]) {
       position = position.toLowerCase();
 
       if (controlsPositions.indexOf(position) === -1)
@@ -38,7 +44,7 @@ export default {
   },
   mounted() {
     // check if accessToken exists
-    const accessToken = this.$config.accessToken || this.setup.accessToken;
+    const accessToken = this.setup.accessToken || this.$qMapconfig.accessToken;
 
     if (!accessToken) {
       throw new Error("Access token isn't defined");
@@ -48,13 +54,23 @@ export default {
     let map = new mapboxgl.Map({ ...this.setup });
 
     const { controls } = this.setup;
-    if (controls) map = this._addControls(map, controls);
+    if (controls) map = this.addControls(map, controls);
 
     // filter markers from slot
     if (this.$slots.default && this.$slots.default.length > 0)
-      this._hasMarkers(this.$slots.default);
+      this.hasMarkers(this.$slots.default);
 
     // save instance
     this.map = map;
+  },
+  render(h) {
+    return h(
+      "div",
+      {
+        class: this.classes,
+        ref: "container",
+      },
+      [this.map && this.markers]
+    );
   },
 };

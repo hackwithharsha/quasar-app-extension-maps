@@ -8,7 +8,7 @@ export default {
   version,
 
   install(Vue, config) {
-    Vue.prototype.$config = config;
+    Vue.prototype.$qMapconfig = config;
 
     Vue.component(MapBox.name, MapBox);
     Vue.component(GMaps.name, GMaps);

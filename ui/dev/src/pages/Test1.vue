@@ -1,23 +1,23 @@
 <template>
   <q-page>
     <div class="map">
-      <QMapBox :config="config.mapbox">
+      <!-- <QMapBox :config="config.mapbox">
         <QMarker
           v-for="marker in markers"
           :key="marker.id"
           :position="marker.position"
           :text="marker.text"
         />
-      </QMapBox>
+      </QMapBox> -->
 
-      <!-- <QGmaps :config="config.gmap">
+      <QGmaps :config="config.gmap">
         <QMarker
           v-for="marker in markers"
           :key="marker.id"
           :position="marker.position"
           :text="marker.text"
         />
-      </QGmaps> -->
+      </QGmaps>
     </div>
   </q-page>
 </template>

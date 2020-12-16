@@ -1,11 +1,16 @@
-import { Loader } from "../utils/googlemaps";
-
+const { Loader } = require("@googlemaps/js-api-loader");
 import MapsMixin from "../mixins/maps";
 
 import { defaultGoogleMapConfig } from "../utils/googlemaps/constants";
 export default {
   name: "QGmaps",
   mixins: [MapsMixin],
+  props: {
+    config: {
+      type: Object,
+      required: false,
+    },
+  },
   data() {
     return {
       mode: "gmaps",
@@ -22,7 +27,7 @@ export default {
   },
   mounted() {
     // check if accessToken exists
-    const accessToken = this.$config.accessToken || this.setup.accessToken;
+    const accessToken = this.setup.accessToken || this.$qMapconfig.accessToken;
 
     if (!accessToken) {
       throw new Error("Access token isn't defined");
@@ -30,17 +35,26 @@ export default {
 
     // filter markers from slot
     if (this.$slots.default && this.$slots.default.length > 0)
-      this._hasMarkers(this.$slots.default);
+      this.hasMarkers(this.$slots.default);
 
     const loader = new Loader({
       apiKey: accessToken,
     });
 
     loader.load().then(() => {
-      const map = new google.maps.Map(this.setup.container, {
+      this.map = new google.maps.Map(this.setup.container, {
         ...this.setup,
       });
-      this.map = map;
     });
+  },
+  render(h) {
+    return h(
+      "div",
+      {
+        class: this.classes,
+        ref: "container",
+      },
+      [this.map && this.markers]
+    );
   },
 };
