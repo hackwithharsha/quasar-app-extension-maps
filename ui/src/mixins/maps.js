@@ -24,6 +24,14 @@ export default {
         marker.tag.includes(QMarker.name)
       );
       this.markers = filteredSlots;
+      return filteredSlots;
+    },
+    filterMarkers(defaults) {
+      const filteredSlots = defaults.filter((marker) =>
+        marker.tag.includes(QMarker.name)
+      );
+      this.markers = filteredSlots;
+      return filteredSlots;
     },
   },
   computed: {

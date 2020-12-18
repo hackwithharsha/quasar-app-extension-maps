@@ -19,7 +19,24 @@ export default {
   data() {
     return {
       mode: "mapbox",
+      setupConfig: this.setup,
     };
+  },
+  watch: {
+    config(currentValue, previousValue) {
+      // remove map
+      this.map.remove();
+      this.map = null;
+
+      // rebuild map on config change
+      this.$nextTick(() => {
+        const setup = { ...this.setup, ...currentValue };
+        this.map = new mapboxgl.Map(setup);
+
+        if (this.setup.controls && this.setup.controls !== previousValue.controls)
+          this.addControls(this.map, this.setup.controls);
+      });
+    },
   },
   computed: {
     setup() {
@@ -41,6 +58,11 @@ export default {
       mapInstance.addControl(controls, position);
       return mapInstance;
     },
+    $_renderMarkers() {
+      if (this.$slots.default && this.$slots.default.length > 0) {
+        return this.filterMarkers(this.$slots.default);
+      }
+    },
   },
   mounted() {
     // check if accessToken exists
@@ -54,12 +76,7 @@ export default {
     let map = new mapboxgl.Map({ ...this.setup });
 
     const { controls } = this.setup;
-    if (controls) map = this.addControls(map, controls);
-
-    // filter markers from slot
-    if (this.$slots.default && this.$slots.default.length > 0)
-      this.hasMarkers(this.$slots.default);
-
+    if (controls) this.addControls(map, controls);
     // save instance
     this.map = map;
   },
@@ -70,7 +87,7 @@ export default {
         class: this.classes,
         ref: "container",
       },
-      [this.map && this.markers]
+      [this.map && this.$_renderMarkers()]
     );
   },
 };
