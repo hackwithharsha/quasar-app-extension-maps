@@ -16,6 +16,19 @@ export default {
       mode: "gmaps",
     };
   },
+  watch: {
+    config(currentValue) {
+      this.map = null;
+      
+      this.$nextTick(() => {
+        const setup = { ...this.setup, ...currentValue };
+
+        this.map = new google.maps.Map(setup.container, {
+          ...setup,
+        });
+      });
+    },
+  },
   computed: {
     setup() {
       return {
@@ -32,10 +45,6 @@ export default {
     if (!accessToken) {
       throw new Error("Access token isn't defined");
     }
-
-    // filter markers from slot
-    if (this.$slots.default && this.$slots.default.length > 0)
-      this.hasMarkers(this.$slots.default);
 
     const loader = new Loader({
       apiKey: accessToken,
@@ -54,7 +63,7 @@ export default {
         class: this.classes,
         ref: "container",
       },
-      [this.map && this.markers]
+      [this.map && this.$_renderMarkers()]
     );
   },
 };

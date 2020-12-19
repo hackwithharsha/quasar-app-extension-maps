@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="map">
+    <div class="map" ref="map">
       <!-- <QMapBox :config="config.mapbox">
         <QMarker
           v-for="marker in markers"
@@ -28,7 +28,18 @@ export default {
     return {
       config: {
         mapbox: {
-          controls: "top-right",
+          navigationControl: {
+            show: true,
+            position: "bottom-right"
+          },
+          geolocateControl: {
+            show: true,
+            position: "top-right"
+          },
+          fullscreenControl: {
+            show: true,
+            position: "top-left"
+          },
           style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o"
         },
         gmap: {
@@ -48,6 +59,28 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    // mocking changes
+    setTimeout(() => {
+      this.markers.push({
+        id: Date.now(),
+        position: { lat: 26.9124, lng: 75.7873 },
+        text: "This is a test marker"
+      });
+
+      this.config.mapbox = {
+        ...this.config.mapbox,
+        fullscreenControls: {
+          show: false
+        }
+      };
+
+      this.config.gmap = {
+        ...this.config.gmap,
+        disableDefaultUI: true
+      };
+    }, 5000);
   }
 };
 </script>

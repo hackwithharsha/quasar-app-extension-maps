@@ -7,6 +7,8 @@ import {
   defaultMapboxConfig,
 } from "../utils/mapbox/constants";
 
+const $_ControlPositions = Object.values(controlsPositions);
+
 export default {
   name: "QMapBox",
   mixins: [MapsMixin],
@@ -25,7 +27,6 @@ export default {
   watch: {
     config(currentValue, previousValue) {
       // remove map
-      this.map.remove();
       this.map = null;
 
       // rebuild map on config change
@@ -33,8 +34,7 @@ export default {
         const setup = { ...this.setup, ...currentValue };
         this.map = new mapboxgl.Map(setup);
 
-        if (this.setup.controls && this.setup.controls !== previousValue.controls)
-          this.addControls(this.map, this.setup.controls);
+        this.$_addControls(this.map);
       });
     },
   },
@@ -48,19 +48,54 @@ export default {
     },
   },
   methods: {
-    addControls(mapInstance, position = controlsPositions[0]) {
-      position = position.toLowerCase();
+    $_checkposition(position = controlsPositions.topRight) {
+      if ($_ControlPositions.indexOf(position.toLowerCase()) == -1)
+        throw new Error(`Invalid position ${position}`);
 
-      if (controlsPositions.indexOf(position) === -1)
-        throw new Error(`Invalid position, [${position}]`);
-
-      const controls = new mapboxgl.NavigationControl();
-      mapInstance.addControl(controls, position);
-      return mapInstance;
+      return position.toLowerCase();
     },
-    $_renderMarkers() {
-      if (this.$slots.default && this.$slots.default.length > 0) {
-        return this.filterMarkers(this.$slots.default);
+    $_addControls(map) {
+      const {
+        scaleControl = {},
+        geolocateControl = {},
+        navigationControl = {},
+        fullscreenControl = {},
+      } = this.setup;
+
+      if (navigationControl.show) {
+        let { options, position } = navigationControl;
+        position = this.$_checkposition(position);
+
+        const navControls = new mapboxgl.NavigationControl(options);
+        map.addControl(navControls, position);
+      }
+
+      if (geolocateControl.show) {
+        let { options, position } = geolocateControl;
+        position = this.$_checkposition(position);
+
+        const geolocate = new mapboxgl.GeolocateControl(options);
+        map.addControl(geolocate, position);
+      }
+
+      if (scaleControl.show) {
+        let { options, position } = scaleControl;
+        position = this.$_checkposition(position);
+
+        const scale = new mapboxgl.ScaleControl(options);
+        map.addControl(scale, position);
+      }
+
+      if (fullscreenControl.show) {
+        let { options, position } = fullscreenControl;
+        position = this.$_checkposition(position);
+
+        options = {
+          container: document.querySelector("body"),
+          ...options,
+        };
+        const fullscreen = new mapboxgl.FullscreenControl(options);
+        map.addControl(fullscreen, position);
       }
     },
   },
@@ -75,8 +110,8 @@ export default {
     mapboxgl.accessToken = accessToken;
     let map = new mapboxgl.Map({ ...this.setup });
 
-    const { controls } = this.setup;
-    if (controls) this.addControls(map, controls);
+    this.$_addControls(map);
+
     // save instance
     this.map = map;
   },

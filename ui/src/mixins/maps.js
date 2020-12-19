@@ -19,19 +19,17 @@ export default {
     };
   },
   methods: {
-    hasMarkers(defaults) {
-      const filteredSlots = defaults.filter((marker) =>
-        marker.tag.includes(QMarker.name)
-      );
-      this.markers = filteredSlots;
-      return filteredSlots;
-    },
     filterMarkers(defaults) {
       const filteredSlots = defaults.filter((marker) =>
         marker.tag.includes(QMarker.name)
       );
       this.markers = filteredSlots;
       return filteredSlots;
+    },
+    $_renderMarkers() {
+      if (this.$slots.default && this.$slots.default.length > 0) {
+        return this.filterMarkers(this.$slots.default);
+      }
     },
   },
   computed: {

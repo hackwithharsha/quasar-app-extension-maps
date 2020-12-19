@@ -1,9 +1,9 @@
-const controlsPositions = [
-  "top-left",
-  "top-right",
-  "bottom-left",
-  "bottom-right",
-];
+const controlsPositions = {
+  topLeft: "top-left",
+  topRight: "top-right",
+  bottomLeft: "bottom-left",
+  bottomRight: "bottom-right",
+};
 
 const defaultMapboxConfig = {
   zoom: 5,
