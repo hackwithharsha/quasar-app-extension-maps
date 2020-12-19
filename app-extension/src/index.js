@@ -8,13 +8,13 @@
 
 function extendConf (conf) {
   // register our boot file
-  conf.boot.push('~@sourcesync/app-extension-maps/src/boot/register.js')
+  conf.boot.push('~@sourcesync/quasar-app-extension-maps/src/boot/register.js')
 
   // make sure app extension files & ui package gets transpiled
   conf.build.transpileDependencies.push(/@sourcesync[\\/]quasar-app-extension-maps[\\/]src/)
 
   // make sure the stylesheet goes through webpack to avoid SSR issues
-  conf.css.push('~@sourcesync/ui/src/index.sass')
+  conf.css.push('~@sourcesync/quasar-ui-maps/src/index.sass')
 }
 
 module.exports = function (api) {
