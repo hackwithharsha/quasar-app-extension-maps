@@ -1,7 +1,9 @@
 const { Loader } = require("@googlemaps/js-api-loader");
+
 import MapsMixin from "../mixins/maps";
 
 import { defaultGoogleMapConfig } from "../utils/googlemaps/constants";
+
 export default {
   name: "QGmaps",
   mixins: [MapsMixin],
@@ -55,15 +57,5 @@ export default {
         ...this.setup,
       });
     });
-  },
-  render(h) {
-    return h(
-      "div",
-      {
-        class: this.classes,
-        ref: "container",
-      },
-      [this.map && this.$_renderMarkers()]
-    );
   },
 };

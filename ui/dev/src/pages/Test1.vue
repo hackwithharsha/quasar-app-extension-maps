@@ -1,23 +1,23 @@
 <template>
   <q-page>
     <div class="map" ref="map">
-      <!-- <QMapBox :config="config.mapbox">
+      <QMapBox :config="config.mapbox">
         <QMarker
           v-for="marker in markers"
           :key="marker.id"
           :position="marker.position"
           :text="marker.text"
         />
-      </QMapBox> -->
+      </QMapBox>
 
-      <QGmaps :config="config.gmap">
+      <!-- <QGmaps :config="config.gmap">
         <QMarker
           v-for="marker in markers"
           :key="marker.id"
           :position="marker.position"
           :text="marker.text"
         />
-      </QGmaps>
+      </QGmaps> -->
     </div>
   </q-page>
 </template>
@@ -28,18 +28,19 @@ export default {
     return {
       config: {
         mapbox: {
-          navigationControl: {
+          NavigationControl: {
             show: true,
             position: "bottom-right"
           },
-          geolocateControl: {
+          GeolocateControl: {
             show: true,
             position: "top-right"
           },
-          fullscreenControl: {
+          FullscreenControl: {
             show: true,
             position: "top-left"
           },
+
           style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o"
         },
         gmap: {
@@ -49,12 +50,12 @@ export default {
       markers: [
         {
           id: Date.now(),
-          position: { lat: 28.7041, lng: 77.1025 },
+          position: { lat: 44.427963, lng: -110.588455 },
           text: "This is a test marker"
         },
         {
           id: Date.now() + 1,
-          position: { lng: 72.8777, lat: 19.076 }
+          position: { lng: -96.424721, lat: 45.305557 }
           // this doesn't have a text to render
         }
       ]
@@ -65,7 +66,7 @@ export default {
     setTimeout(() => {
       this.markers.push({
         id: Date.now(),
-        position: { lat: 26.9124, lng: 75.7873 },
+        position: { lat: 41.2131788, lng: -124.0046276 },
         text: "This is a test marker"
       });
 
@@ -77,8 +78,7 @@ export default {
       };
 
       this.config.gmap = {
-        ...this.config.gmap,
-        disableDefaultUI: true
+        ...this.config.gmap
       };
     }, 5000);
   }

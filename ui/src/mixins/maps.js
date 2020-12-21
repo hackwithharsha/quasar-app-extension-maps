@@ -37,4 +37,14 @@ export default {
       return "q-map";
     },
   },
+  render(h) {
+    return h(
+      "div",
+      {
+        class: "q-map",
+        ref: "container",
+      },
+      [this.map && this.$_renderMarkers()]
+    );
+  },
 };

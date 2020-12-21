@@ -1,8 +1,10 @@
 const mapboxgl = require("mapbox-gl");
 import {
   defaultPopupConfig,
-  defaultMarkerConfig,
+  defaultMapboxMarkerConfig,
 } from "../utils/mapbox/constants";
+
+import { defaultGMapsMarkerConfig } from "../utils/googlemaps/constants";
 
 export default {
   name: "QMarker",
@@ -24,10 +26,10 @@ export default {
     markerSetup() {
       return this.config && this.config.marker
         ? {
-            ...defaultMarkerConfig,
+            ...defaultMapboxMarkerConfig,
             ...this.config.marker,
           }
-        : { ...defaultMarkerConfig };
+        : { ...defaultMapboxMarkerConfig };
     },
     popupSetup() {
       return this.config && this.config.popup
@@ -73,6 +75,7 @@ export default {
       const marker = new google.maps.Marker({
         position: { ...this.getPositions },
         title: this.text,
+        ...defaultGMapsMarkerConfig,
       });
 
       marker.setMap(this.map);

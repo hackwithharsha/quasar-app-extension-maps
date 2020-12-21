@@ -1,3 +1,10 @@
+const availableControls = {
+  NavigationControl: "NavigationControl",
+  GeolocateControl: "GeolocateControl",
+  ScaleControl: "ScaleControl",
+  FullscreenControl: "FullscreenControl",
+};
+
 const controlsPositions = {
   topLeft: "top-left",
   topRight: "top-right",
@@ -6,12 +13,12 @@ const controlsPositions = {
 };
 
 const defaultMapboxConfig = {
-  zoom: 5,
-  center: [78.9629, 20.5937], // [lng, lat]
+  zoom: 4,
+  center: [-95, 37], // [lng, lat]
   style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o",
 };
 
-const defaultMarkerConfig = {
+const defaultMapboxMarkerConfig = {
   color: "#ff8282",
 };
 
@@ -21,8 +28,9 @@ const defaultPopupConfig = {
 };
 
 export {
+  availableControls,
   controlsPositions,
   defaultMapboxConfig,
   defaultPopupConfig,
-  defaultMarkerConfig,
+  defaultMapboxMarkerConfig,
 };
