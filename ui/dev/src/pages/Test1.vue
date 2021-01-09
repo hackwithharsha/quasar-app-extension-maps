@@ -69,14 +69,6 @@ export default {
         position: { lat: 41.2131788, lng: -124.0046276 },
         text: "This is a test marker"
       });
-
-      this.config.mapbox = {
-        ...this.config.mapbox,
-        fullscreenControls: {
-          show: false
-        }
-      };
-
       this.config.gmap = {
         ...this.config.gmap
       };

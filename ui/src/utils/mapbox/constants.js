@@ -15,7 +15,7 @@ const controlsPositions = {
 const defaultMapboxConfig = {
   zoom: 4,
   center: [-95, 37], // [lng, lat]
-  style: "mapbox://styles/softraw/cki8h8ft60nkq19s73qmwby0o",
+  style: "mapbox://styles/mapbox/streets-v11",
 };
 
 const defaultMapboxMarkerConfig = {

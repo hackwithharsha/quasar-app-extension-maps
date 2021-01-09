@@ -1,7 +1,7 @@
 # Component QMaps
 
-[![npm](https://img.shields.io/npm/v/@sourcesync/quasar-ui-maps.svg?label=@sourcesync/quasar-ui-maps)](https://www.npmjs.com/package/quasar-ui-maps)
-[![npm](https://img.shields.io/npm/dt/@sourcesync/quasar-ui-maps.svg)](https://www.npmjs.com/package/quasar-ui-maps)
+[![npm](https://img.shields.io/npm/v/@sourcesync/quasar-ui-maps.svg?label=@sourcesync/quasar-ui-maps)](https://www.npmjs.com/package/@sourcesync/quasar-ui-maps)
+[![npm](https://img.shields.io/npm/dt/@sourcesync/quasar-ui-maps.svg)](https://www.npmjs.com/package/@sourcesync/quasar-ui-maps)
 
 > Short description of the component
 
@@ -21,13 +21,14 @@ import QMaps from "@sourcesync/quasar-ui-maps";
 
 Vue.use(QMaps, {
   accessToken: "<mapbox/google public api_key>",
+  mode: "mapbox" // available modes [mapbox, gmaps]
 });
 ```
 
 **OR**:
 
 ```html
-<style src="quasar-ui-maps/dist/index.css"></style>
+<style src="~@sourcesync/quasar-ui-maps/dist/index.css"></style>
 
 <script>
   import { Mapbox, Marker } from "@sourcesync/quasar-ui-maps";
@@ -55,7 +56,7 @@ Vue.use(QMaps, {
 **OR**:
 
 ```html
-<style src="quasar-ui-maps/dist/index.css"></style>
+<style src="@sourcesync/quasar-ui-maps/dist/index.css"></style>
 
 <script>
   import { Mapbox, Marker } from "@sourcesync/quasar-ui-maps";
@@ -70,8 +71,6 @@ Vue.use(QMaps, {
 ```
 
 ## UMD variant
-
-Exports `window.maps`.
 
 Add the following tag(s) after the Quasar ones:
 

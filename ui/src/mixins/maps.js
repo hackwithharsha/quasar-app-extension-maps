@@ -26,15 +26,10 @@ export default {
       this.markers = filteredSlots;
       return filteredSlots;
     },
-    $_renderMarkers() {
+    renderMarkers() {
       if (this.$slots.default && this.$slots.default.length > 0) {
         return this.filterMarkers(this.$slots.default);
       }
-    },
-  },
-  computed: {
-    classes() {
-      return "q-map";
     },
   },
   render(h) {
@@ -44,7 +39,7 @@ export default {
         class: "q-map",
         ref: "container",
       },
-      [this.map && this.$_renderMarkers()]
+      [this.map && this.renderMarkers()]
     );
   },
 };
