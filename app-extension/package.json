@@ -7,10 +7,10 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Source-Digital/quasar-app-extension-maps.git"
+    "url": "https://github.com/Source-Digital/@sourcesync/quasar-app-extension-maps.git"
   },
   "bugs": "",
-  "homepage": "https://github.com/Source-Digital/quasar-app-extension-maps.git",
+  "homepage": "https://github.com/Source-Digital/@sourcesync/quasar-app-extension-maps.git",
   "dependencies": {
     "@sourcesync/quasar-ui-maps": "^0.0.1"
   },
