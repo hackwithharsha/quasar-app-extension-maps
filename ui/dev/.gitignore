@@ -1,9 +1,12 @@
+.quasar
 .DS_Store
 .thumbs.db
 node_modules
-dist
-yarn.lock
-package-lock.json
+/dist
+/src-cordova/node_modules
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -15,8 +18,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+*.log
 
-*todo*
-
-# envirnoment files
-*.env*
+*env*

@@ -1,0 +1,22 @@
+{
+  "name": "@sourcesync/quasar-app-extension-maps",
+  "version": "0.0.1",
+  "description": "Quasar Extension for MapBox and Google Maps",
+  "author": "sunil@sourcedigital.net",
+  "license": "Source Digital",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Source-Digital/@sourcesync/quasar-app-extension-maps.git"
+  },
+  "bugs": "",
+  "homepage": "https://github.com/Source-Digital/@sourcesync/quasar-app-extension-maps.git",
+  "dependencies": {
+    "@sourcesync/quasar-ui-maps": "^0.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  }
+}

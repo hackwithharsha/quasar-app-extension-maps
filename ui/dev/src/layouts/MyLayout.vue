@@ -1,0 +1,21 @@
+<template>
+  <q-layout view="lHh Lpr lFf">
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+  </q-layout>
+</template>
+
+<script>
+import { version } from '@sourcesync/quasar-ui-maps' // "ui" is aliased in quasar.conf.js
+
+export default {
+  name: 'MyLayout',
+
+  data () {
+    return {
+      version
+    }
+  }
+}
+</script>
